@@ -9,10 +9,7 @@ class ssupy(commands.Cog):
     @commands.command()
     async def ssu(self, ctx):
         if ctx.author.guild_permissions.administrator or any(role.name == "testie" for role in ctx.author.roles):
-            print("User has the required role.")
-
-
-
+            channel = discord.utils.get(ctx.guild.channels, id = 1039997170025234512)
 
 async def setup(client):
     await client.add_cog(ssupy(client))
