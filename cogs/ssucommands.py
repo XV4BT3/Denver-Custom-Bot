@@ -1,8 +1,9 @@
 import discord
 from discord.ext import commands
 from discord import app_commands
+import sqlite3
 
-class ssupy(commands.Cog):
+class ssucommands(commands.Cog):
     def __init__(self, client):
         self.client = client
 
@@ -16,14 +17,17 @@ class ssupy(commands.Cog):
                 description=f"> A server start up has started make sure to join if you reacted or get warned for not attending!  \n \n ➡ **Server Owner:** `02_xboxplayer` \n ➡ **Code:** `DENver` \n ➡ **Paste this in your browser for easier access!:** \n roblox://placeId=2534724415&launchData=%7B%22psCode%22%3A%22Denverp%22%7D \n \n **Hosted by:**  {ctx.author.mention}",
                 colour=discord.Colour(int(html_color[1:], 16)),
             )
+            embed.set_thumbnail(url="https://media.discordapp.net/attachments/1093371346517495858/1136474512293113937/Denver_City_PNG.png?width=655&height=655")
             await channel.send(content = "@everyone", embed=embed)
             message = await ctx.reply(content=f"{ctx.author.mention}, \n You've succesfully started a ssu.")
             await message.delete(delay=5)
             await ctx.message.delete(delay=5)
         else:
-                message = await ctx.reply(content=f"{ctx.author.mention}, \n You've succesfully started a ssu.")
-                await message.delete(delay=5)
-                await ctx.message.delete(delay=5)
+            message = await ctx.reply(content=f"{ctx.author.mention}, \n You've succesfully started a ssu.")
+            await message.delete(delay=5)
+            await ctx.message.delete(delay=5)
+    @commands.command()
+    async def endssu(self, ctx):
 
 async def setup(client):
-    await client.add_cog(ssupy(client))
+    await client.add_cog(ssucommands(client))
