@@ -13,6 +13,8 @@ class ssupy(commands.Cog):
             embed = discord.Embed(title="Server SSU!",
                                   description="> Denver city has started a ssu, for a quick entry click the link above.", 
                                   colour=discord.Colour.green())
+            channel.send(embed=embed)
+            await ctx.send(content = "SSU succesfully started!", ephemeral = True)
             
 async def setup(client):
     await client.add_cog(ssupy(client))
