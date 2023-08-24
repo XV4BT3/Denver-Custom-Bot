@@ -10,7 +10,7 @@ class ssupy(commands.Cog):
     async def ssu(self, ctx):
         if ctx.author.guild_permissions.administrator or any(role.name == "testie" for role in ctx.author.roles):
             channel = discord.utils.get(ctx.guild.channels, id = 1039997170025234512)
-            print("Hello I am Janick")
+            print("Hello I am Janick2")
             
 async def setup(client):
     await client.add_cog(ssupy(client))
