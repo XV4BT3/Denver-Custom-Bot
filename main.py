@@ -4,6 +4,7 @@ import asyncio
 import os
 
 client = commands.Bot(command_prefix="$", intents=discord.Intents.all())
+token = os.environ.get('DISCORD_TOKEN')
 
 @client.event
 async def on_ready():
@@ -19,6 +20,6 @@ async def load():
 async def main():
     async with client:
         await load()
-        await client.start("MTEzOTk5ODYxMzQ5NDMwMDcyNA.GtXIAr.PK0oMC5oLOd_OspvNQYLGYBvda2hmtfPslhW6c")
+        await client.start(token)
 
 asyncio.run(main())
