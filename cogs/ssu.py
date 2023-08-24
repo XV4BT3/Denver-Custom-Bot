@@ -10,6 +10,9 @@ class ssupy(commands.Cog):
     async def ssu(self, ctx):
         if ctx.author.guild_permissions.administrator or any(role.name == "testie" for role in ctx.author.roles):
             channel = discord.utils.get(ctx.guild.channels, id = 1039997170025234512)
+            embed = discord.Embed(title="Server SSU!",
+                                  description="> Denver city has started a ssu, for a quick entry click the link above.", 
+                                  colour=discord.Colour.green())
             
 async def setup(client):
     await client.add_cog(ssupy(client))

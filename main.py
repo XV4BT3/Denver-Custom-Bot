@@ -19,6 +19,6 @@ async def load():
 async def main():
     async with client:
         await load()
-        await client.start("MYPERSONAL BOT TOKEN")
+        await client.start("MTEzOTk5ODYxMzQ5NDMwMDcyNA.GtXIAr.PK0oMC5oLOd_OspvNQYLGYBvda2hmtfPslhW6c")
 
 asyncio.run(main())
