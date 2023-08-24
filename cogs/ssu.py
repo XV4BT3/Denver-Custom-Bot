@@ -21,3 +21,6 @@ class ssupy(commands.Cog):
         else:
             await ctx.send(content="You do not have the permissions to run this command.", ephemeral=True, delete_after=5)
             await ctx.message.delete()
+
+async def setup(client):
+    await client.add_cog(ssupy(client))
