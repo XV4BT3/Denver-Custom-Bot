@@ -3,6 +3,9 @@ from discord.ext import commands
 from discord import app_commands
 import sqlite3
 
+conn = sqlite3.connect("denver_database.db")
+cursor = conn.cursor()
+
 class ssucommands(commands.Cog):
     def __init__(self, client):
         self.client = client
@@ -18,7 +21,13 @@ class ssucommands(commands.Cog):
                 colour=discord.Colour(int(html_color[1:], 16)),
             )
             embed.set_thumbnail(url="https://media.discordapp.net/attachments/1093371346517495858/1136474512293113937/Denver_City_PNG.png?width=655&height=655")
-            await channel.send(content = "@everyone", embed=embed)
+            embed_Sent = await channel.send(content = "@everyon", embed=embed)
+            try:
+                cursor.execute("UPDATE ssustatus SET message_id = ? WHERE id = ?", (embed_Sent.id, 1))
+                conn.commit()
+            except sqlite3.Error as e:
+                print("An error occurred:", e)
+
             message = await ctx.reply(content=f"{ctx.author.mention}, \n You've succesfully started a ssu.")
             await message.delete(delay=5)
             await ctx.message.delete(delay=5)
@@ -28,6 +37,7 @@ class ssucommands(commands.Cog):
             await ctx.message.delete(delay=5)
     @commands.command()
     async def endssu(self, ctx):
+        print("Hello!")
 
 async def setup(client):
     await client.add_cog(ssucommands(client))
