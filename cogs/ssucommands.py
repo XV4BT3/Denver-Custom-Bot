@@ -37,7 +37,17 @@ class ssucommands(commands.Cog):
             await ctx.message.delete(delay=5)
     @commands.command()
     async def endssu(self, ctx):
-        print("Hello!")
+        if ctx.author.guild_permissions.administrator or any(role.name == "testie" for role in ctx.author.roles):
+            cursor.execute("SELECT message_id FROM ssustatus")
+            message_Id = cursor.fetchone()
+            channel = discord.utils.get(ctx.guild.channels, id=1039997170025234512)
+            message_fetched = await channel.fetch_message(message_Id[0])
+            await message_fetched.delete()
+            await ctx.message.delete()
+            cursor.execute("UPDATE ssustatus SET message_id = NULL WHERE id = ?", (1,))
+            conn.commit()
+
+            
 
 async def setup(client):
     await client.add_cog(ssucommands(client))
