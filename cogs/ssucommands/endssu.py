@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-from discord import app_commands
 import sqlite3
 
 conn = sqlite3.connect("denver_database.db")
