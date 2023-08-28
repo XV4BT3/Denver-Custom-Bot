@@ -20,7 +20,7 @@ class endssu(commands.Cog):
             await ctx.message.delete()
             cursor.execute("UPDATE ssustatus SET message_id = NULL WHERE id = ?", (1,))
             conn.commit()
-            conn.close
+            conn.close()
 
 async def setup(client):
     await client.add_cog(endssu(client))

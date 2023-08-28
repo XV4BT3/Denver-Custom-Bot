@@ -24,6 +24,7 @@ class ssupoll(commands.Cog):
             await ctx.message.delete(delay=5)
             cursor.execute("UPDATE ssustatus SET ssu_poll_message = ? WHERE id = ?", (embed_Sent.id, 1))
             conn.commit()
+            conn.close()
 
 async def setup(client):
     await client.add_cog(ssupoll(client))
